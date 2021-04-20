@@ -4,7 +4,7 @@ import PathInfoBuilder from './modules/PathInfoBuilder';
 import LatinRules from './modules/LatinRules';
 import ThaiRules from './modules/ThaiRules';
 
-class WordcutTS {
+class WordcutJS {
   acceptors = new Acceptors();
   pathSelector = new PathSelector();
   pathInfoBuilder = new PathInfoBuilder();
@@ -96,4 +96,4 @@ class WordcutTS {
   }
 }
 
-export default WordcutTS;
+export default WordcutJS;

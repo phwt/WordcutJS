@@ -1,3 +1,3 @@
-import WordcutTS from './WordcutTS';
+import WordcutJS from './WordcutJS';
 
-export default WordcutTS;
+export default WordcutJS;
