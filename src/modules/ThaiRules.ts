@@ -1,3 +1,6 @@
+import { staticImplements } from './Utils';
+import { Rule } from '../types/Rule';
+
 const isMatch = (pat: string, offset: number, ch: string) => {
   if (pat.length <= offset) return false;
   const _ch = pat[offset];
@@ -9,10 +12,10 @@ const isMatch = (pat: string, offset: number, ch: string) => {
   );
 };
 
+@staticImplements<Rule>()
 class Rule0 {
   static pat = 'เหก็ม';
-  // @ts-ignore
-  static createAcceptor(tag: any) {
+  static createAcceptor() {
     return {
       strOffset: 0,
       isFinal: false,
@@ -33,9 +36,9 @@ class Rule0 {
   }
 }
 
+@staticImplements<Rule>()
 class PartRule {
-  // @ts-ignore
-  static createAcceptor(tag: any) {
+  static createAcceptor() {
     return {
       strOffset: 0,
       patterns: ['แก', 'เก', 'ก้', 'กก์', 'กา', 'กี', 'กิ', 'กืก'],

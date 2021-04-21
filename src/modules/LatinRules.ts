@@ -1,7 +1,10 @@
-class WordRule {
-  static createAcceptor(tag: any) {
-    if (tag['WORD_RULE']) return null;
+import { Rule, RuleObject } from '../types/Rule';
+import { staticImplements } from './Utils';
 
+@staticImplements<Rule>()
+class WordRule {
+  static createAcceptor(tag: any): RuleObject | null {
+    if (tag['WORD_RULE']) return null;
     return {
       strOffset: 0,
       isFinal: false,
@@ -23,6 +26,7 @@ class WordRule {
   }
 }
 
+@staticImplements<Rule>()
 class NumberRule {
   static createAcceptor(tag: any) {
     if (tag['NUMBER_RULE']) return null;
@@ -47,6 +51,7 @@ class NumberRule {
   }
 }
 
+@staticImplements<Rule>()
 class SpaceRule {
   static tag = 'SPACE_RULE';
 
@@ -80,10 +85,10 @@ class SpaceRule {
   }
 }
 
+@staticImplements<Rule>()
 class SingleSymbolRule {
   static tag = 'SINSYM';
-  // @ts-ignore
-  static createAcceptor(tag: any) {
+  static createAcceptor() {
     return {
       strOffset: 0,
       isFinal: false,

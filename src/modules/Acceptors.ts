@@ -1,5 +1,7 @@
+import { Rule } from '../types/Rule';
+
 class Acceptors {
-  creators: any[];
+  creators: Rule[];
   current: any[];
   tag: any;
 
