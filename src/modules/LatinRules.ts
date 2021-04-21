@@ -1,9 +1,9 @@
-import { Rule, RuleObject } from '../types/Rule';
+import { Acceptor, Rule } from '../types/Rule';
 import { staticImplements } from './Utils';
 
 @staticImplements<Rule>()
 class WordRule {
-  static createAcceptor(tag: any): RuleObject | null {
+  static createAcceptor(tag: any): Acceptor | null {
     if (tag['WORD_RULE']) return null;
     return {
       strOffset: 0,
