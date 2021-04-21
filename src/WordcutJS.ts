@@ -3,15 +3,28 @@ import Acceptors from './modules/Acceptors';
 import PathInfoBuilder from './modules/PathInfoBuilder';
 import LatinRules from './modules/LatinRules';
 import ThaiRules from './modules/ThaiRules';
+import { Rule } from './types/Rule';
 
 class WordcutJS {
-  acceptors = new Acceptors();
-  pathSelector = new PathSelector();
-  pathInfoBuilder = new PathInfoBuilder();
+  private acceptors: Acceptors;
+  private pathSelector: PathSelector;
+  private pathInfoBuilder: PathInfoBuilder;
 
-  constructor() {
-    LatinRules.map(rule => this.acceptors.creators.push(rule));
-    ThaiRules.map(rule => this.acceptors.creators.push(rule));
+  constructor({
+    acceptors = new Acceptors(),
+    pathSelector = new PathSelector(),
+    pathInfoBuilder = new PathInfoBuilder(),
+    rules = [...LatinRules, ...ThaiRules],
+  }: {
+    acceptors: Acceptors;
+    pathSelector: PathSelector;
+    pathInfoBuilder: PathInfoBuilder;
+    rules: Rule[];
+  }) {
+    this.acceptors = acceptors;
+    this.pathSelector = pathSelector;
+    this.pathInfoBuilder = pathInfoBuilder;
+    this.acceptors.creators = rules;
   }
 
   buildPath(text: string) {
