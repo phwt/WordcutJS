@@ -10,17 +10,24 @@ class WordcutJS {
   private pathSelector: PathSelector;
   private pathInfoBuilder: PathInfoBuilder;
 
-  constructor({
-    acceptors = new Acceptors(),
-    pathSelector = new PathSelector(),
-    pathInfoBuilder = new PathInfoBuilder(),
-    rules = [...LatinRules, ...ThaiRules],
-  }: {
-    acceptors: Acceptors;
-    pathSelector: PathSelector;
-    pathInfoBuilder: PathInfoBuilder;
-    rules: Rule[];
-  }) {
+  constructor(
+    {
+      acceptors,
+      pathSelector,
+      pathInfoBuilder,
+      rules,
+    }: {
+      acceptors: Acceptors;
+      pathSelector: PathSelector;
+      pathInfoBuilder: PathInfoBuilder;
+      rules: Rule[];
+    } = {
+      acceptors: new Acceptors(),
+      pathSelector: new PathSelector(),
+      pathInfoBuilder: new PathInfoBuilder(),
+      rules: [...LatinRules, ...ThaiRules],
+    }
+  ) {
     this.acceptors = acceptors;
     this.pathSelector = pathSelector;
     this.pathInfoBuilder = pathInfoBuilder;
