@@ -1,4 +1,4 @@
-import { Common } from '../data';
+import WordList from '../data';
 import { Acceptor, Rule } from '../types/Rule';
 import { createPrefixTree } from './PrefixTree';
 import { staticImplements } from './Utils';
@@ -11,7 +11,7 @@ export class Dict {
   static tree: any;
 
   static init() {
-    Dict.addWords(Common);
+    Dict.addWords(WordList);
     Dict.finalizeDict();
   }
 

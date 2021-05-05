@@ -41,8 +41,6 @@ class WordcutJS {
       Dict.init();
       this.acceptors.creators.push(Dict);
     }
-
-    // console.log(this.acceptors.creators);
   }
 
   buildPath(text: string) {
