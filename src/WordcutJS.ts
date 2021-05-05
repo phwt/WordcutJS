@@ -4,6 +4,7 @@ import PathInfoBuilder from './modules/PathInfoBuilder';
 import LatinRules from './modules/LatinRules';
 import ThaiRules from './modules/ThaiRules';
 import { Rule } from './types/Rule';
+import { Dict } from './modules/Dict';
 
 class WordcutJS {
   private acceptors: Acceptors;
@@ -16,22 +17,32 @@ class WordcutJS {
       pathSelector,
       pathInfoBuilder,
       rules,
+      withDict,
     }: {
       acceptors: Acceptors;
       pathSelector: PathSelector;
       pathInfoBuilder: PathInfoBuilder;
       rules: Rule[];
+      withDict: boolean;
     } = {
       acceptors: new Acceptors(),
       pathSelector: new PathSelector(),
       pathInfoBuilder: new PathInfoBuilder(),
       rules: [...LatinRules, ...ThaiRules],
+      withDict: true,
     }
   ) {
     this.acceptors = acceptors;
     this.pathSelector = pathSelector;
     this.pathInfoBuilder = pathInfoBuilder;
     this.acceptors.creators = rules;
+
+    if (withDict) {
+      Dict.init();
+      this.acceptors.creators.push(Dict);
+    }
+
+    // console.log(this.acceptors.creators);
   }
 
   buildPath(text: string) {
